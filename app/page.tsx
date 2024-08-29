@@ -1,7 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Carrusel from "./home/Carrusel";
 import Buscador from "./buscador/Buscador";
+import Carrusel from "./home/Carrusel";
+
 export default function Home() {
   return (
     <>
