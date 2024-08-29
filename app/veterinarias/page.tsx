@@ -1,54 +1,28 @@
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
+import { Box, Container } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Image from "next/image";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material";
 
-export default function TitlebarImageList() {
+export default function page() {
   return (
-    <ImageList sx={{ width: 500, height: 450 }}>
-      <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">December</ListSubheader>
-      </ImageListItem>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            alt={item.title}
-            loading="lazy"
+    <Container maxWidth={"sm"}>
+      <Stack spacing={2}>
+        <Box height={"50vh"} position={"relative"}>
+          <Image
+            src={"https://picsum.photos/200/300?grayscale"}
+            alt={"foto de veterinaria"}
+            fill
           />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                aria-label={`info about ${item.title}`}
-              >
-                <InfoIcon />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+        </Box>
+        <Typography variant="h3" gutterBottom>
+          Ola gigante
+        </Typography>
+
+        <Typography variant="h4" gutterBottom>
+          1 1 1
+        </Typography>
+      </Stack>
+    </Container>
   );
 }
-
-const itemData = [
-  {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-    author: "@bkristastucchio",
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-    author: "@rollelflex_graphy726",
-  },
-];
