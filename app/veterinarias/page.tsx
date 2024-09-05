@@ -1,11 +1,10 @@
-import { Box, Container } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Box, Container, Paper, Stack, styled } from "@mui/material";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
 
 export default function page() {
   return (
@@ -19,7 +18,6 @@ export default function page() {
           />
         </Box>
         <Box sx={{ minWidth: 275 }}>
-      
           <Card variant="outlined">{card}</Card>
         </Box>
       </Stack>
@@ -30,7 +28,7 @@ export default function page() {
 const bull = (
   <Box
     component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
   >
     •
   </Box>
@@ -39,18 +37,62 @@ const bull = (
 const card = (
   <Container>
     <CardContent>
-      <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-        Word of the Day
+      <Typography variant="h1" sx={{ textAlign: "center", fontSize: 40 }}>
+        Centro Clinico
       </Typography>
-      <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>adjective</Typography>
-      <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
+      <Typography component="h2" sx={{ textAlign: "center", fontSize: 35 }}>
+        Veterinario los papus
       </Typography>
+      <Typography
+        gutterBottom
+        sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
+      >
+        F,Federico Garcia Lorca 53, 1405
+      </Typography>
+
+      <Stack direction="row" spacing={2}>
+        <Stack spacing={2}>
+          <Typography
+            gutterBottom
+            sx={{ color: "text.secondary", fontSize: 14 }}
+          >
+            Tipos de animales
+          </Typography>
+          <Typography
+            sx={{ color: "text.secondary", textAlign: "center", mb: 1.5 }}
+          >
+            Animales pequenos
+          </Typography>
+        </Stack>
+
+        <Stack spacing={2}>
+          <Typography
+            gutterBottom
+            sx={{ color: "text.secondary", fontSize: 14 }}
+          >
+            24 horas
+          </Typography>
+          <Typography
+            sx={{ color: "text.secondary", textAlign: "center", mb: 1.5 }}
+          >
+            No
+          </Typography>
+        </Stack>
+      </Stack>
     </CardContent>
     <CardActions>
       <Button size="small">Learn More</Button>
     </CardActions>
   </Container>
 );
+
+//agregar un stack para que quede como en los tipos de animales y que queden mas centrados
+
+<Stack spacing={2}>
+  <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
+    Animales pequenos
+  </Typography>
+  <Typography sx={{ color: "text.secondary", textAlign: "center", mb: 1.5 }}>
+    Gatos Perros
+  </Typography>
+</Stack>;
