@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
-import SwipeableViews from "react-swipeable-views";
 import { Box, Stack } from "@mui/material";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 function Component() {
+  const setting = {
+    dots: true,
+  };
   return (
     <Box height={"40vh"}>
-      <Stack direction={"row"} overflow={"scroll"}>
+      <Slider {...setting}>
         <Box position={"relative"} width={"100vw"} height={"40vh"}>
           <Image
             src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
@@ -41,7 +46,7 @@ function Component() {
             fill
           />
         </Box>
-      </Stack>
+      </Slider>
     </Box>
   );
 }
