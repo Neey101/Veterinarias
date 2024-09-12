@@ -1,27 +1,62 @@
-import { Box, Container, Paper, Stack, styled } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Container,
+  Grid,
+  IconButton,
+  Link,
+  Paper,
+  Stack,
+  styled,
+  Toolbar,
+} from "@mui/material";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import MenuIcon from "@mui/icons-material/Menu";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import PermPhoneMsgRoundedIcon from "@mui/icons-material/PermPhoneMsgRounded";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import Icon from "@mui/material/Icon";
 
 export default function page() {
   return (
-    <Container maxWidth={"sm"}>
-      <Stack spacing={2}>
-        <Box height={"50vh"} position={"relative"}>
-          <Image
-            src={"https://picsum.photos/200/300?grayscale"}
-            alt={"foto de veterinaria"}
-            fill
-          />
-        </Box>
-        <Box sx={{ minWidth: 275 }}>
-          <Card variant="outlined">{card}</Card>
-        </Box>
-      </Stack>
-    </Container>
+    <Box sx={{ backgroundColor: "lightblue", minHeight: "100vh" }}>
+      <Container maxWidth={"sm"} sx={{ backgroundColor: "white" }}>
+        <AppBar position="static">
+          <Toolbar variant="dense">
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Typography variant="h6" color="inherit" component="div">
+              Veterinaria informacion
+            </Typography>
+          </Toolbar>
+        </AppBar>
+
+        <Stack spacing={2}>
+          <Box height={"50vh"} position={"relative"}>
+            <Image
+              src={"https://picsum.photos/200/300?grayscale"}
+              alt={"foto de veterinaria"}
+              fill
+            />
+          </Box>
+          <Box sx={{ minWidth: 275 }}>
+            <Card variant="outlined">{card}</Card>
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
 
@@ -40,14 +75,49 @@ const card = (
       <Typography variant="h1" sx={{ textAlign: "center", fontSize: 40 }}>
         Centro Clinico
       </Typography>
+
       <Typography component="h2" sx={{ textAlign: "center", fontSize: 35 }}>
         Veterinario los papus
       </Typography>
+
+      <Typography
+        gutterBottom
+        sx={{ color: "text.secondary", textAlign: "left", fontSize: 20 }}
+      >
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <LocationOnRoundedIcon sx={{ color: "text.primary" }} />
+          <Link
+            href="geo:-34.62087903097601, -58.444463937978874;u=35"
+            underline="none"
+            color="inherit"
+          >
+            Federico García Lorca 53, Cdad. Autónoma de Buenos Aires
+          </Link>
+        </Stack>
+      </Typography>
+
       <Typography
         gutterBottom
         sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
       >
-        F,Federico Garcia Lorca 53, 1405
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <PermPhoneMsgRoundedIcon sx={{ color: "text.primary" }} />
+          <Link href="tel:+54 9 11 5577-8855" color="inherit">
+            11 5577-8855
+          </Link>
+        </Stack>
+      </Typography>
+
+      <Typography
+        gutterBottom
+        sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
+      >
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <AccountCircleRoundedIcon sx={{ color: "text.primary" }} />
+          <Link href="mailto:anabelhuanaco@gmail.com" color="inherit">
+            anabelhuanaco@gmail.com
+          </Link>
+        </Stack>
       </Typography>
 
       <Stack direction="row" spacing={2}>
@@ -79,20 +149,39 @@ const card = (
           </Typography>
         </Stack>
       </Stack>
+      <Stack direction="row" spacing={2}>
+        <Stack spacing={2}>
+          <Typography
+            gutterBottom
+            sx={{ color: "text.secondary", fontSize: 14 }}
+          >
+            Tipo de
+          </Typography>
+          <Typography
+            sx={{ color: "text.secondary", textAlign: "center", mb: 1.5 }}
+          >
+            Gatos Perros
+          </Typography>
+        </Stack>
+
+        <Stack spacing={2}>
+          <Typography
+            gutterBottom
+            sx={{ color: "text.secondary", fontSize: 14 }}
+          >
+            Especialidades
+          </Typography>
+          <Typography
+            sx={{ color: "text.secondary", textAlign: "center", mb: 1.5 }}
+          >
+            Clinico general
+          </Typography>
+        </Stack>
+      </Stack>
     </CardContent>
     <CardActions>
       <Button size="small">Learn More</Button>
     </CardActions>
   </Container>
 );
-
-//agregar un stack para que quede como en los tipos de animales y que queden mas centrados
-
-<Stack spacing={2}>
-  <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
-    Animales pequenos
-  </Typography>
-  <Typography sx={{ color: "text.secondary", textAlign: "center", mb: 1.5 }}>
-    Gatos Perros
-  </Typography>
-</Stack>;
+//hi
