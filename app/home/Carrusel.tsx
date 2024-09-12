@@ -9,41 +9,46 @@ function Component() {
     dots: true,
   };
   return (
-    <Box height={"40vh"}>
+    <Box height={"42vh"}>
       <Slider {...setting}>
-        <Box position={"relative"} width={"100vw"} height={"40vh"}>
+        <Box position={"relative"} width={"30vw"} height={"60vh"}>
           <Image
-            src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+            src="https://picsum.photos/id/837/5000/3333"
             alt="..."
             fill
+            style={{ objectFit: "cover" }}
           />
         </Box>
-        <Box position={"relative"} width={"100vw"} height={"40vh"}>
+        <Box position={"relative"} width={"100vw"} height={"60vh"}>
           <Image
-            src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+            src="https://picsum.photos/id/1062/5000/3334"
             alt="..."
             fill
+            style={{ objectFit: "cover" }}
           />
         </Box>
-        <Box position={"relative"} width={"100vw"} height={"40vh"}>
+        <Box position={"relative"} width={"100vw"} height={"60vh"}>
           <Image
-            src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+            src="https://picsum.photos/id/169/2500/1662"
             alt="..."
             fill
+            style={{ objectFit: "cover" }}
           />
         </Box>
-        <Box position={"relative"} width={"100vw"} height={"40vh"}>
+        <Box position={"relative"} width={"100vw"} height={"60vh"}>
           <Image
-            src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
+            src="https://picsum.photos/id/237/3500/2095"
             alt="..."
             fill
+            style={{ objectFit: "cover" }}
           />
         </Box>
-        <Box position={"relative"} width={"100vw"} height={"40vh"}>
+        <Box position={"relative"} width={"100vw"} height={"60vh"}>
           <Image
-            src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
+            src="https://picsum.photos/id/40/4106/2806"
             alt="..."
             fill
+            style={{ objectFit: "cover" }}
           />
         </Box>
       </Slider>
