@@ -9,7 +9,9 @@ import TextField from "@mui/material/TextField";
 export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ bgcolor: "#768a4f" }}>
+        {" "}
+        {/* Barra verde */}
         <Toolbar>
           <Box sx={{ flexGrow: 1 }} />
           <Box
@@ -24,7 +26,21 @@ export default function ButtonAppBar() {
               variant="outlined"
               size="small"
               placeholder="Busqueda..."
-              sx={{ mr: 1, bgcolor: "background.paper" }}
+              sx={{
+                mr: 1,
+                bgcolor: "white", //fondo de "busqueda"
+                "& .MuiInputBase-input": {
+                  color: "#768a4f", // Color del texto
+                },
+                "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                  {
+                    borderColor: "grey.400", // Color del borde al pasar el ratón
+                  },
+                "&.Mui-focused .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                  {
+                    borderColor: "#768a4f", // Color del borde al enfocar
+                  },
+              }}
             />
             <IconButton color="inherit">
               <SearchIcon />
@@ -36,4 +52,3 @@ export default function ButtonAppBar() {
     </Box>
   );
 }
-//no terminado .-.
