@@ -10,12 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model Veterinaria {
   id String @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name String 
-  lastname String 
+  nombreDelLocal String 
+  ubicacion String 
+  latitud Float
+  longitud Float
   email String @unique
-  password String 
+  numero String 
 }
