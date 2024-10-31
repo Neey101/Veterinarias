@@ -1,3 +1,5 @@
+//Es el componente principal de la aplicación
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Buscador from "./buscador/Buscador";
