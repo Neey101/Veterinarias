@@ -20,4 +20,13 @@ model Veterinaria {
   longitud Float
   email String @unique
   numero String 
+  tiposdeMascotasAAtender TiposdeMascotasAAtender[]
+}
+
+
+model TiposdeMascotasAAtender {
+  id String @id @default(uuid())
+  tipo String // enum [ "gato", perro]
+  veterinaria Veterinaria @relation(fields: [idVeterinaria], references: [id])
+  idVeterinaria String
 }

@@ -6,6 +6,7 @@ import Buscador from "./buscador/Buscador";
 import Carrusel from "./home/Carrusel";
 import Datos from "./home/Datos";
 import Contenedor from "./home/Contenedor";
+import { TipoDeMascota } from "@/types";
 
 export default function Home() {
   return (
