@@ -22,6 +22,8 @@ const TarjetaVeterianaria = () => {
     <Container>
       <Stack direction="row" spacing={2}>
         <Card
+          component={"a"}
+          href="http://localhost:3000/veterinarias"
           sx={{
             maxWidth: 345,
             transition: "transform 0.3s ease-in-out",
