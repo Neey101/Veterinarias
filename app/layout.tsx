@@ -1,3 +1,4 @@
+"use client";
 // layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -5,7 +6,6 @@ import "./globals.css";
 import Theme from "@/app/theme";
 import FormularioVeterinaria from "./buscador/FormularioVeterinaria"; // Asegúrate de la ruta correcta
 import "leaflet/dist/leaflet.css";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +41,10 @@ export default function RootLayout({
       if (respuesta.ok) {
         console.log("Veterinaria guardada");
       } else {
-        console.error("Error al guardar la veterinaria:", await respuesta.text());
+        console.error(
+          "Error al guardar la veterinaria:",
+          await respuesta.text()
+        );
       }
     } catch (error) {
       console.error("Error al guardar la veterinaria:", error);
