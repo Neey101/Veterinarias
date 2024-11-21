@@ -1,4 +1,4 @@
-//esto borra, solo es un mensaje para que aparezca en los commits :D
+// este es un comentario para que se guarde, el cambio fue que al page.txt estaba en la carpeta buscador y la cambie a la carpeta veterinarias - registrar
 // buscador/FormularioVeterinaria.tsx
 "use client";
 
