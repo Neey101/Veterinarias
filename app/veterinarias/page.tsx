@@ -2,12 +2,9 @@ import {
   AppBar,
   Box,
   Container,
-  Grid,
   IconButton,
   Link,
-  Paper,
   Stack,
-  styled,
   Toolbar,
 } from "@mui/material";
 import Image from "next/image";
@@ -80,11 +77,11 @@ const card = (
         Veterinario los papus
       </Typography>
 
-      <Typography
-        gutterBottom
-        sx={{ color: "text.secondary", textAlign: "left", fontSize: 20 }}
-      >
-        <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        <Typography
+          gutterBottom
+          sx={{ color: "text.secondary", textAlign: "left", fontSize: 20 }}
+        >
           <LocationOnRoundedIcon sx={{ color: "text.primary" }} />
           <Link
             href="geo:-34.62087903097601, -58.444463937978874;u=35"
@@ -93,32 +90,32 @@ const card = (
           >
             Federico García Lorca 53, Cdad. Autónoma de Buenos Aires
           </Link>
-        </Stack>
-      </Typography>
+        </Typography>
+      </Stack>
 
-      <Typography
-        gutterBottom
-        sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
-      >
-        <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        <Typography
+          gutterBottom
+          sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
+        >
           <PermPhoneMsgRoundedIcon sx={{ color: "text.primary" }} />
           <Link href="tel:+54 9 11 5577-8855" color="inherit">
             11 5577-8855
           </Link>
-        </Stack>
-      </Typography>
+        </Typography>
+      </Stack>
 
-      <Typography
-        gutterBottom
-        sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
-      >
-        <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        <Typography
+          gutterBottom
+          sx={{ color: "text.secondary", textAlign: "center", fontSize: 20 }}
+        >
           <AccountCircleRoundedIcon sx={{ color: "text.primary" }} />
           <Link href="mailto:anabelhuanaco@gmail.com" color="inherit">
             anabelhuanaco@gmail.com
           </Link>
-        </Stack>
-      </Typography>
+        </Typography>
+      </Stack>
 
       <Stack direction="row" spacing={2}>
         <Stack spacing={2}>
