@@ -1,12 +1,12 @@
 //esto borra, solo es un mensaje para que aparezca en los commits :D
 // buscador/FormularioVeterinaria.tsx
-"use client"; // Asegúrate de incluir esta línea si usas hooks de React
+"use client";
 
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 export const regristrarUnaNuevaVeterinaria = async (FormData: FormData) => {};
 
-const FormularioVeterinaria = () => {
+const page = () => {
   return (
     <Box component="form" action={regristrarUnaNuevaVeterinaria} sx={{ my: 2 }}>
       <TextField
@@ -19,20 +19,6 @@ const FormularioVeterinaria = () => {
       <TextField
         label="Ubicación"
         name="ubicación"
-        fullWidth
-        required
-        sx={{ mb: 2 }}
-      />
-      <TextField
-        label="Latitud"
-        name="latitud"
-        fullWidth
-        required
-        sx={{ mb: 2 }}
-      />
-      <TextField
-        label="Longitud"
-        name="longitud"
         fullWidth
         required
         sx={{ mb: 2 }}
@@ -52,4 +38,4 @@ const FormularioVeterinaria = () => {
   );
 };
 
-export default FormularioVeterinaria;
+export default page;

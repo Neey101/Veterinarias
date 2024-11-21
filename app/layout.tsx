@@ -1,10 +1,8 @@
-"use client";
 // layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Theme from "@/app/theme";
-import FormularioVeterinaria from "./buscador/FormularioVeterinaria"; // Asegúrate de la ruta correcta
 import "leaflet/dist/leaflet.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -54,10 +52,7 @@ export default function RootLayout({
   return (
     <Theme>
       <html lang="en">
-        <body className={inter.className}>
-          <FormularioVeterinaria onSubmit={guardarVeterinaria} />
-          {children}
-        </body>
+        <body className={inter.className}>{children}</body>
       </html>
     </Theme>
   );

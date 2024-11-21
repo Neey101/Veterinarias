@@ -6,5 +6,5 @@ export enum TipoDeMascota {
   Felinos = "FELINOS",
   Caninos = "CANINOS",
   Reptiles = "REPTILES",
-  //esto es solo para que aparezca guardado
+  //este mensaje es solo para que aparezca guardado
 }
