@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "tests:e2e": "bun run build && bunx playwright test",
-    "tests": "bunx playwright test",
-    "create:scene": "bunx playwright codegen",
-    "lint": "next lint"
+    "tests:e2e": "npm run build && npx playwright test",
+    "tests": "npx playwright test",
+    "create:scene": "npx playwright codegen",
+    "lint": "next lint",
+    "init": "npx prisma migrate dev --name init"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -24,12 +25,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
-
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-
     "react-leaflet": "^4.2.1",
-
     "zod": "^3.23.8"
   },
   "devDependencies": {
