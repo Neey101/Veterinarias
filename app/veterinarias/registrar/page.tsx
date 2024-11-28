@@ -1,14 +1,30 @@
-// este es un comentario para que se guarde, el cambio fue que al page.txt estaba en la carpeta buscador y la cambie a la carpeta veterinarias - registrar
 // buscador/FormularioVeterinaria.tsx
 "use client";
 
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
-export const regristrarUnaNuevaVeterinaria = async (FormData: FormData) => {};
-
+import { useFormState } from "react-dom";
+import { registrarNuevaVeterinaria } from "../actions";
 const page = () => {
+  const accion = async (_: any, data: FormData) => {
+    const local = data.get("local");
+    const ubicacion = data.get("ubicacion");
+    const email = data.get("email");
+    const numero = data.get("número");
+    registrarNuevaVeterinaria(
+      local?.toString()!,
+      ubicacion?.toString()!,
+      numero?.toString()!,
+      email?.toString()!
+    );
+  };
+  const [mensaje, disparador] = useFormState(accion, undefined);
   return (
-    <Box component="form" action={regristrarUnaNuevaVeterinaria} sx={{ my: 2 }}>
+    <Box
+      component="form"
+      action={disparador}
+      sx={{ my: 2, backgroundColor: "white", padding: 2 }}
+    >
       <TextField
         label="Nombre del Local"
         name="local"
