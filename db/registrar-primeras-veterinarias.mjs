@@ -1,3 +1,4 @@
+import { VerifiedTwoTone } from "@mui/icons-material";
 import { PrismaClient } from "@prisma/client";
 (async () => {
   try {
@@ -22,6 +23,15 @@ import { PrismaClient } from "@prisma/client";
               "Víctor Martínez 120, C1406 Cdad. Autónoma de Buenos Aires",
             longitud: -58.44477141829615,
             latitud: -34.62379086909921,
+          },
+          {
+            email: "hosicos@",
+            numero: "01127261756",
+            nombreDelLocal: "Veterinaria Hocicos",
+            ubicacion:
+              "Fragata Pres. Sarmiento 7, C1406 Cdad. Autónoma de Buenos Aires",
+            longitud: -58.44807526909882,
+            latitud: -34.62288761496829,
           },
         ],
       });
