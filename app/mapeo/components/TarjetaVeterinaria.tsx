@@ -58,15 +58,15 @@ const TarjetaVeterianaria = () => {
 
               <Stack direction="row" alignItems="center" spacing={1}>
                 <PermPhoneMsgRoundedIcon sx={{ color: "text.primary" }} />
-                <Link href="tel:+54 9 11 5577-8855" color="inherit">
-                  11 5577-8855
+                <Link href="tel:+54 9 11 4422-8855" color="inherit">
+                  11 4477-8855
                 </Link>
               </Stack>
 
               <Stack direction="row" alignItems="center" spacing={1}>
                 <AccountCircleRoundedIcon sx={{ color: "text.primary" }} />
                 <Link href="mailto:anabelhuanaco@gmail.com" color="inherit">
-                  anabelhuanaco@gmail.com
+                  vett@gmail.com
                 </Link>
               </Stack>
             </CardContent>

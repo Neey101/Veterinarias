@@ -3,6 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L, { LatLngTuple } from "leaflet";
+import PinDropIcon from "@mui/icons-material/PinDrop"; // Importar ícono
 
 // Configuración manual del ícono
 const customIcon = new L.Icon({
@@ -18,12 +19,47 @@ const customIcon = new L.Icon({
 
 const Mapa = () => {
   const [estoyEnElCliente, setEstoyEnElCliente] = useState(false);
+  const [mostrarOpciones, setMostrarOpciones] = useState(false);
 
   useEffect(() => {
     setEstoyEnElCliente(true);
   }, []);
 
-  const coordenadas: LatLngTuple = [-34.62046405659382, -58.44444903179032]; // Coordenadas del marcador
+  const coordenadas: LatLngTuple = [-34.62046405659382, -58.44444903179032]; // Coordenadas iniciales
+  const marcadoresBase = [
+    {
+      posicion: [-34.62046405659382, -58.44444903179032],
+      nombre: "Veterinaria Caballito",
+      direccion: "Federico García Lorca 53",
+      link: "https://maps.app.goo.gl/jNTpFJHFJLe3KSN48",
+    },
+  ];
+
+  const otrasVeterinarias = [
+    {
+      posicion: [-34.623800051, -58.446770321],
+      nombre: "Veterinaria Sanitas",
+      direccion: "Víctor Martínez 120",
+      link: "https://maps.app.goo.gl/jNTpFJHFJLe3KSN48",
+    },
+    {
+      posicion: [-34.621200056, -58.447000421],
+      nombre: "Veterinaria Pet Mundo",
+      direccion: "Rojas 62",
+      link: "https://maps.app.goo.gl/jNTpFJHFJLe3KSN48",
+    },
+  ];
+
+  const [marcadores, setMarcadores] = useState(marcadoresBase);
+
+  const mostrarMasVeterinarias = () => {
+    if (!mostrarOpciones) {
+      setMarcadores([...marcadoresBase, ...otrasVeterinarias]); // Agregar más marcadores
+    } else {
+      setMarcadores(marcadoresBase); // Volver a los marcadores iniciales
+    }
+    setMostrarOpciones(!mostrarOpciones);
+  };
 
   return (
     estoyEnElCliente && (
@@ -38,24 +74,51 @@ const Mapa = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {/* Marcador principal */}
-          <Marker position={coordenadas} icon={customIcon}>
-            <Popup>
-              <strong>Veterinaria Caballito</strong>
-              <br />
-              <br />
-              {/* Enlace al mapa de Google */}
-              <a
-                href="https://maps.app.goo.gl/jNTpFJHFJLe3KSN48"
-                target="_blank" // Abre el enlace en una nueva pestaña
-                rel="noopener noreferrer" // Mejora de seguridad para enlaces externos
-                style={{ color: "blue", textDecoration: "underline" }}
-              >
-                Federico García Lorca 53.
-              </a>
-            </Popup>
-          </Marker>
+          {/* Renderizar marcadores dinámicamente */}
+          {marcadores.map((veterinaria, index) => (
+            <Marker
+              key={index}
+              position={veterinaria.posicion as LatLngTuple}
+              icon={customIcon}
+            >
+              <Popup>
+                <div>
+                  <strong>
+                    <PinDropIcon style={{ verticalAlign: "middle" }} />{" "}
+                    {veterinaria.nombre}
+                  </strong>
+                  <br />
+                  {veterinaria.direccion}
+                  <br />
+                  <a
+                    href={veterinaria.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "blue", textDecoration: "underline" }}
+                  >
+                    Ver en mapa
+                  </a>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
         </MapContainer>
+
+        {/* Botón para alternar veterinarias */}
+        <button
+          onClick={mostrarMasVeterinarias}
+          style={{
+            marginTop: "10px",
+            padding: "10px",
+            backgroundColor: "#007BFF",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          {mostrarOpciones ? "Ocultar opciones" : "Más opciones"}
+        </button>
       </div>
     )
   );
