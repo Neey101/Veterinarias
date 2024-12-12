@@ -11,11 +11,17 @@ const FormularioVeterinaria = () => {
     const ubicacion = data.get("ubicacion");
     const email = data.get("email");
     const numero = data.get("número");
+    const latitud = parseFloat(data.get("latitud") as string); //Convertir a número
+    const longitud = parseFloat(data.get("longitud") as string); //parseFloat convierte una cadena (string) en un número de punto flotante (float). Esta función analiza el argumento de tipo cadena y devuelve un número de punto flotante.
     registrarNuevaVeterinaria(
       local?.toString()!,
       ubicacion?.toString()!,
       numero?.toString()!,
-      email?.toString()!
+      email?.toString()!,
+      latitud,
+      longitud
+
+      //aca falta latitud y longitud(?)
     );
   };
   const [mensaje, disparador] = useFormState(accion, undefined);
@@ -75,10 +81,30 @@ const FormularioVeterinaria = () => {
           required
           sx={{ mb: 2 }}
         />
-        <TextField label="Email" name="email" fullWidth required sx={{ mb: 2 }} />
+        <TextField
+          label="Email"
+          name="email"
+          fullWidth
+          required
+          sx={{ mb: 2 }}
+        />
         <TextField
           label="Número"
           name="número"
+          fullWidth
+          required
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Latitud"
+          name="latitud"
+          fullWidth
+          required
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Longitud"
+          name="longitud"
           fullWidth
           required
           sx={{ mb: 2 }}

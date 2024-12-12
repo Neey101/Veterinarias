@@ -6,7 +6,9 @@ export async function registrarNuevaVeterinaria(
   nombreDelLocal: string,
   ubicacion: string,
   numero: string,
-  gmail: string
+  gmail: string,
+  latitud: number,
+  longitud: number
 ) {
   try {
     console.log(nombreDelLocal);
