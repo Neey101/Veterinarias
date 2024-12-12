@@ -15,7 +15,7 @@ const enlacesaDatos = [
     enlace: "https://es.wikihow.com/aplicar-una-vacuna-a-un-perro",
   },
   {
-    datos: "¿Como adapto mi casa a mi gato?",
+    datos: "¿Como adapto mi casa para mi gato?",
     enlace:
       "https://www.expertoanimal.com/como-adaptar-una-casa-a-los-gatos-23942.html",
   },
