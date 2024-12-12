@@ -1,6 +1,6 @@
 import { Divider, Stack } from "@mui/material";
 import React from "react";
-import TarjetaVeterianaria from "./TarjetaVeterinaria";
+import TarjetaVeterinaria from "./TarjetaVeterinaria";
 
 const GaleriaDeVeterinarias = () => {
   return (
@@ -9,8 +9,8 @@ const GaleriaDeVeterinarias = () => {
       divider={<Divider orientation="vertical" flexItem />}
       spacing={2}
     >
-      <TarjetaVeterianaria />
-      <TarjetaVeterianaria />
+      <TarjetaVeterinaria />
+      <TarjetaVeterinaria />
     </Stack>
   );
 };

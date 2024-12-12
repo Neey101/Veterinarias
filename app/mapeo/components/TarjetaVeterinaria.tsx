@@ -17,13 +17,29 @@ import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import PermPhoneMsgRoundedIcon from "@mui/icons-material/PermPhoneMsgRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
-const TarjetaVeterianaria = () => {
+const TarjetaVeterinaria = ({
+  nombre,
+  email,
+  numero,
+  direccion,
+  foto,
+  latitud,
+  longitud,
+}: {
+  nombre: string;
+  email: string;
+  numero: string;
+  direccion: string;
+  foto: string;
+  latitud: number;
+  longitud: number;
+}) => {
   return (
     <Container>
       <Stack direction="row" spacing={2}>
         <Card
           component={"a"}
-          href="http://localhost:3000/veterinarias"
+          href={foto}
           sx={{
             maxWidth: 345,
             transition: "transform 0.3s ease-in-out",
@@ -34,39 +50,34 @@ const TarjetaVeterianaria = () => {
           }}
         >
           <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="https://picsum.photos/200/300?grayscale"
-              alt="green iguana"
-            />
+            <CardMedia component="img" height="140" image={foto} alt="vetes" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Caballito
+                {nombre}
               </Typography>
 
               <Stack direction="row" alignItems="center" spacing={1}>
                 <LocationOnRoundedIcon sx={{ color: "text.primary" }} />
                 <Link
-                  href="geo:-34.62087903097601, -58.444463937978874;u=35"
+                  href={`geo:${latitud},${longitud};u=35`} // Concatenar latitud y longitud
                   underline="none"
                   color="inherit"
                 >
-                  Federico García Lorca 53, Cdad. Autónoma de Buenos Aires
+                  {direccion}
                 </Link>
               </Stack>
 
               <Stack direction="row" alignItems="center" spacing={1}>
                 <PermPhoneMsgRoundedIcon sx={{ color: "text.primary" }} />
-                <Link href="tel:+54 9 11 4422-8855" color="inherit">
-                  11 4477-8855
+                <Link href={"tel:" + numero} color="inherit">
+                  {numero}
                 </Link>
               </Stack>
 
               <Stack direction="row" alignItems="center" spacing={1}>
                 <AccountCircleRoundedIcon sx={{ color: "text.primary" }} />
-                <Link href="mailto:anabelhuanaco@gmail.com" color="inherit">
-                  vett@gmail.com
+                <Link href={"mailto:" + email} color="inherit">
+                  {email}
                 </Link>
               </Stack>
             </CardContent>
@@ -77,7 +88,7 @@ const TarjetaVeterianaria = () => {
   );
 };
 
-export default TarjetaVeterianaria;
+export default TarjetaVeterinaria;
 //agregar el nombre de cada card
 //ponerle sombra a las card
 //
