@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L, { LatLngTuple } from "leaflet";
 import PinDropIcon from "@mui/icons-material/PinDrop"; // Importar ícono
-
+import TarjetaVeterinaria from "./TarjetaVeterinaria"; // Importa el componente TarjetaVeterinaria
+import { Veterinaria } from "@prisma/client";
 // Configuración manual del ícono
 const customIcon = new L.Icon({
   iconUrl:
@@ -19,53 +20,33 @@ const customIcon = new L.Icon({
 
 const Mapa = () => {
   const [estoyEnElCliente, setEstoyEnElCliente] = useState(false);
-  const [mostrarOpciones, setMostrarOpciones] = useState(false);
+  const [veterinarias, setVeterinarias] = useState<Veterinaria[]>([]); // Aquí se almacenan las veterinarias
 
   useEffect(() => {
     setEstoyEnElCliente(true);
+
+    // Función para obtener las veterinarias desde la API
+    const obtenerVeterinarias = async () => {
+      try {
+        // Aquí va la URL de tu API
+        const response = await fetch('/api/veterinarias'); // O usa axios según lo tengas configurado
+        const data = await response.json();
+        setVeterinarias(data["veterinarias"]); // Guardamos las veterinarias en el estado
+      } catch (error) {
+        console.error('Error al obtener veterinarias:', error);
+      }
+    };
+
+    obtenerVeterinarias(); // Llamada a la API para obtener las veterinarias
   }, []);
 
   const coordenadas: LatLngTuple = [-34.62046405659382, -58.44444903179032]; // Coordenadas iniciales
-  const marcadoresBase = [
-    {
-      posicion: [-34.62046405659382, -58.44444903179032],
-      nombre: "Veterinaria Caballito",
-      direccion: "Federico García Lorca 53",
-      link: "https://maps.app.goo.gl/jNTpFJHFJLe3KSN48",
-    },
-  ];
-
-  const otrasVeterinarias = [
-    {
-      posicion: [-34.623800051, -58.446770321],
-      nombre: "Veterinaria Sanitas",
-      direccion: "Víctor Martínez 120",
-      link: "https://maps.app.goo.gl/jNTpFJHFJLe3KSN48",
-    },
-    {
-      posicion: [-34.621200056, -58.447000421],
-      nombre: "Veterinaria Pet Mundo",
-      direccion: "Rojas 62",
-      link: "https://maps.app.goo.gl/jNTpFJHFJLe3KSN48",
-    },
-  ];
-
-  const [marcadores, setMarcadores] = useState(marcadoresBase);
-
-  const mostrarMasVeterinarias = () => {
-    if (!mostrarOpciones) {
-      setMarcadores([...marcadoresBase, ...otrasVeterinarias]); // Agregar más marcadores
-    } else {
-      setMarcadores(marcadoresBase); // Volver a los marcadores iniciales
-    }
-    setMostrarOpciones(!mostrarOpciones);
-  };
 
   return (
     estoyEnElCliente && (
       <div id="mapa">
         <MapContainer
-          style={{ height: "300px" }}
+          style={{ height: "500px" }}
           center={coordenadas}
           zoom={14}
           scrollWheelZoom={false}
@@ -75,50 +56,26 @@ const Mapa = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {/* Renderizar marcadores dinámicamente */}
-          {marcadores.map((veterinaria, index) => (
+          {veterinarias.map((veterinaria) => (
             <Marker
-              key={index}
-              position={veterinaria.posicion as LatLngTuple}
+              key={veterinaria.id} // Usamos el id único de cada veterinaria
+              position={[veterinaria.latitud, veterinaria.longitud] as LatLngTuple}
               icon={customIcon}
             >
               <Popup>
-                <div>
-                  <strong>
-                    <PinDropIcon style={{ verticalAlign: "middle" }} />{" "}
-                    {veterinaria.nombre}
-                  </strong>
-                  <br />
-                  {veterinaria.direccion}
-                  <br />
-                  <a
-                    href={veterinaria.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "blue", textDecoration: "underline" }}
-                  >
-                    Ver en mapa
-                  </a>
-                </div>
+                <TarjetaVeterinaria
+                  nombre={veterinaria.nombreDelLocal}
+                  email={veterinaria.email}
+                  numero={veterinaria.numero}
+                  direccion={veterinaria.ubicacion}
+                  foto={"https://picsum.photos/200/300?grayscale"} // Asegúrate de tener la URL de la foto de la veterinaria
+                  latitud={veterinaria.latitud}
+                  longitud={veterinaria.longitud}
+                />
               </Popup>
             </Marker>
           ))}
         </MapContainer>
-
-        {/* Botón para alternar veterinarias */}
-        <button
-          onClick={mostrarMasVeterinarias}
-          style={{
-            marginTop: "10px",
-            padding: "10px",
-            backgroundColor: "#007BFF",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          {mostrarOpciones ? "Ocultar opciones" : "Más opciones"}
-        </button>
       </div>
     )
   );
