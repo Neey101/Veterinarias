@@ -1,15 +1,11 @@
 import {
-  AppBar,
-  Box,
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Container,
-  IconButton,
   Link,
   Stack,
-  Toolbar,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -39,7 +35,7 @@ const TarjetaVeterinaria = ({
       <Stack direction="row" spacing={2}>
         <Card
           component={"a"}
-          href={foto}
+          href={"http://localhost:3001/veterinarias/"}
           sx={{
             maxWidth: 345,
             transition: "transform 0.3s ease-in-out",
