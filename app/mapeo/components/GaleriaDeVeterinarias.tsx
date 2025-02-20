@@ -1,4 +1,4 @@
-import { Divider, Stack } from "@mui/material";
+import { Divider, ImageList, Stack } from "@mui/material";
 import React from "react";
 import TarjetaVeterinaria from "./TarjetaVeterinaria";
 import db from "@/db";
@@ -6,11 +6,7 @@ import db from "@/db";
 const GaleriaDeVeterinarias = async () => {
   const veterinarias = await db.veterinaria.findMany({});
   return (
-    <Stack
-      direction={"row"}
-      divider={<Divider orientation="vertical" flexItem />}
-      spacing={2}
-    >
+    <ImageList cols={2} rowHeight={164} gap={25} >
       {veterinarias.map((veterinaria) => {
         return (
           <TarjetaVeterinaria
@@ -24,7 +20,7 @@ const GaleriaDeVeterinarias = async () => {
           />
         );
       })}
-    </Stack>
+    </ImageList>
   );
 };
 

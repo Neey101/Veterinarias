@@ -1,3 +1,4 @@
+//http://localhost:3001/veterinarias/registrar
 "use client"; // Asegúrate de incluir esta línea para que todo el componente se ejecute en el cliente
 
 import Image from "next/image";
