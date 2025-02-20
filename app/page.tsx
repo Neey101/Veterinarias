@@ -1,3 +1,4 @@
+//http://localhost:3001/veterinarias/registrar
 "use client"; // Asegúrate de incluir esta línea para que todo el componente se ejecute en el cliente
 
 import Image from "next/image";
@@ -20,7 +21,7 @@ export default function Home() {
       <Box display="flex" justifyContent="center" mt={4}> {/* Añadir el Box para centrar el botón */}
         <Box
           component="a"
-          href="http://localhost:3000/veterinarias/registrar"
+          href="http://localhost:3001/veterinarias/registrar"
           sx={{
             display: 'inline-block',
             textDecoration: 'none',
