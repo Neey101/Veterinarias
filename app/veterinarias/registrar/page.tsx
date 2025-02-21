@@ -1,9 +1,12 @@
+//formulario
 "use client";
 
-import React, { useState } from "react";
-import { TextField, Button, Box, Typography } from "@mui/material";
+import React from "react";
+import { TextField, Button, Box, Typography, IconButton } from "@mui/material";
 import { useFormState } from "react-dom";
 import { registrarNuevaVeterinaria } from "../actions";
+import HomeIcon from "@mui/icons-material/Home"; // Icono de casa
+import Link from "next/link"; // Link de Next.js
 
 const FormularioVeterinaria = () => {
   const accion = async (_: any, data: FormData) => {
@@ -11,8 +14,9 @@ const FormularioVeterinaria = () => {
     const ubicacion = data.get("ubicacion");
     const email = data.get("email");
     const numero = data.get("número");
-    const latitud = parseFloat(data.get("latitud") as string); //Convertir a número
-    const longitud = parseFloat(data.get("longitud") as string); //parseFloat convierte una cadena (string) en un número de punto flotante (float). Esta función analiza el argumento de tipo cadena y devuelve un número de punto flotante.
+    const latitud = parseFloat(data.get("latitud") as string);
+    const longitud = parseFloat(data.get("longitud") as string);
+    
     registrarNuevaVeterinaria(
       local?.toString()!,
       ubicacion?.toString()!,
@@ -20,10 +24,9 @@ const FormularioVeterinaria = () => {
       email?.toString()!,
       latitud,
       longitud
-
-      //aca falta latitud y longitud(?)
     );
   };
+
   const [mensaje, disparador] = useFormState(accion, undefined);
 
   return (
@@ -34,23 +37,34 @@ const FormularioVeterinaria = () => {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "100vh",
-        backgroundColor: "#FFFEFE", // Fondo blanco
+        backgroundColor: "#FFFEFE",
         padding: 4,
       }}
     >
-      {/* Cuadro con el título "Formulario" */}
+      {/* Contenedor del encabezado con el botón */}
       <Box
         sx={{
           width: "100%",
-          backgroundColor: "#768a4f", // Color verde
+          backgroundColor: "#768a4f", // Verde
           borderRadius: "8px",
-          mb: 4, // Margen inferior
-          p: 2, // Padding
+          mb: 4,
+          p: 2,
           display: "flex",
-          justifyContent: "center",
+          alignItems: "center",
+          position: "relative", // Permite posicionar el botón sin afectar el texto
         }}
       >
-        <Typography variant="h4" color="white">
+        {/* Botón a la izquierda */}
+        <Box sx={{ position: "absolute", left: 10 }}>
+          <Link href="http://localhost:3001" passHref>
+            <IconButton sx={{ color: "white" }}>
+              <HomeIcon />
+            </IconButton>
+          </Link>
+        </Box>
+
+        {/* Texto centrado */}
+        <Typography variant="h4" color="white" sx={{ flex: 1, textAlign: "center" }}>
           Formulario
         </Typography>
       </Box>
@@ -60,63 +74,20 @@ const FormularioVeterinaria = () => {
         action={disparador}
         sx={{
           width: "100%",
-          maxWidth: "600px", // Ancho máximo del formulario
-          backgroundColor: "white", // Fondo blanco
+          maxWidth: "600px",
+          backgroundColor: "white",
           padding: 3,
           borderRadius: "8px",
-          boxShadow: 3, // Sombra para el formulario
+          boxShadow: 3,
         }}
       >
-        <TextField
-          label="Nombre del Local"
-          name="local"
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          label="Ubicación"
-          name="ubicacion"
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          label="Email"
-          name="email"
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          label="Número"
-          name="número"
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          label="Latitud"
-          name="latitud"
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          label="Longitud"
-          name="longitud"
-          fullWidth
-          required
-          sx={{ mb: 2 }}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{
-            textTransform: "none", // Evitar que el texto se convierta a mayúsculas
-          }}
-        >
+        <TextField label="Nombre del Local" name="local" fullWidth required sx={{ mb: 2 }} />
+        <TextField label="Ubicación" name="ubicacion" fullWidth required sx={{ mb: 2 }} />
+        <TextField label="Email" name="email" fullWidth required sx={{ mb: 2 }} />
+        <TextField label="Número" name="número" fullWidth required sx={{ mb: 2 }} />
+        <TextField label="Latitud" name="latitud" fullWidth required sx={{ mb: 2 }} />
+        <TextField label="Longitud" name="longitud" fullWidth required sx={{ mb: 2 }} />
+        <Button type="submit" variant="contained" color="primary" sx={{ textTransform: "none" }}>
           Guardar Veterinaria
         </Button>
       </Box>
