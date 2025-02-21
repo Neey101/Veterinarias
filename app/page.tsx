@@ -1,5 +1,5 @@
 //http://localhost:3001/veterinarias/registrar
-"use client"; // Asegúrate de incluir esta línea para que todo el componente se ejecute en el cliente
+"use client"; //Se ejecuta en el cliente
 
 import Image from "next/image";
 import styles from "./page.module.css";
