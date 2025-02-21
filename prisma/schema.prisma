@@ -23,6 +23,7 @@ model Veterinaria {
   tiposdeMascotasAAtender TiposdeMascotasAAtender[]
 }
 
+
 //otro mensaje para borrar, aparece en commits (motivo)
 model TiposdeMascotasAAtender {
   id String @id @default(uuid())
